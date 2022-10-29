@@ -5,10 +5,20 @@ Data processing should happen here.
 Edit this file to implement your module.
 """
 
+import os
+import re
 from logging import getLogger
+from .tokens import generateTokens
+from .calculate import evaluateRVN
 
 log = getLogger("module")
 
+__RESULT_LABEL__ = os.getenv("RESULT_LABEL", "defaultLabel")
+__NEW_RESULT__ = os.getenv("NEW_RESULT", "stand-alone")
+
+TOKENS, tokensError = generateTokens()
+if tokensError:
+    log.error(tokensError)
 
 def module_main(received_data: any) -> [any, str]:
     """
@@ -27,11 +37,24 @@ def module_main(received_data: any) -> [any, str]:
     log.debug("Processing ...")
 
     try:
-        # YOUR CODE HERE
+        global TOKENS
 
-        processed_data = received_data
+        # find labeled data in TOKENS and emplace their values from received_data
+        for i in range(len(TOKENS)):
+            if re.search("{{.*?}}", TOKENS[i]):
+                # its a label so emplace value
+                TOKENS[i] = received_data[TOKENS[i][2:-2]]
 
-        return processed_data, None
+        calculation_result = evaluateRVN(TOKENS)
+
+        if __NEW_RESULT__ == "update" or __NEW_RESULT__ == "append":
+            received_data[__RESULT_LABEL__] = calculation_result
+        elif __NEW_RESULT__ == "stand-alone":
+            received_data = {
+                __RESULT_LABEL__: calculation_result
+            }
+
+        return received_data, None
 
     except Exception as e:
         return None, f"Exception in the module business logic: {e}"
