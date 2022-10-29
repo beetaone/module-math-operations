@@ -22,12 +22,12 @@ operations_mapping = {
     "mod": math.fmod
 }
 
-def evaluateRVN(RVN):
+def evaluateRPN(RPN):
     try:
         stack = []
 
         # iterating Reversed Polish Notation
-        for element in RVN:
+        for element in RPN:
             # element is a number
             if element not in list(operations_mapping.keys()):
                 stack.append(int(element))

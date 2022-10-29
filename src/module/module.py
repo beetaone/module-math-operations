@@ -9,7 +9,7 @@ import os
 import re
 from logging import getLogger
 from .tokens import generateTokens
-from .calculate import evaluateRVN
+from .calculate import evaluateRPN
 
 log = getLogger("module")
 
@@ -45,7 +45,7 @@ def module_main(received_data: any) -> [any, str]:
                 # its a label so emplace value
                 TOKENS[i] = received_data[TOKENS[i][2:-2]]
 
-        calculation_result = evaluateRVN(TOKENS)
+        calculation_result = evaluateRPN(TOKENS)
 
         if __NEW_RESULT__ == "update" or __NEW_RESULT__ == "append":
             received_data[__RESULT_LABEL__] = calculation_result
