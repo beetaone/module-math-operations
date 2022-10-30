@@ -30,6 +30,8 @@ def generateTokens():
             'tan': 4,
         }
 
+        negative_number_flag = False
+
         # forward feed the formula and build RPN representation
         while FORMULA:
             # found a closing bracket
@@ -44,6 +46,10 @@ def generateTokens():
             elif FORMULA[0] == '(':
                 stack.append(FORMULA[0])
                 FORMULA = FORMULA[1:]
+                # check for the negative number following the opening bracket
+                if FORMULA[0] == '-':
+                    negative_number_flag = True
+                    FORMULA = FORMULA[1:]
 
             # found a number
             elif FORMULA[0].isdigit():
@@ -60,6 +66,9 @@ def generateTokens():
                         decimal = False
                     FORMULA = FORMULA[1:]
                 currNumber = currNumber / divider
+                if negative_number_flag:
+                    currNumber = currNumber * (-1)
+                    negative_number_flag = False
                 TOKENS.append(currNumber)
 
             # found label from data
