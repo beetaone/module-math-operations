@@ -7,6 +7,7 @@ Edit this file to implement your module.
 
 import os
 import re
+import copy
 from logging import getLogger
 from .tokens import generateTokens
 from .calculate import evaluateRPN
@@ -39,20 +40,44 @@ def module_main(received_data: any) -> [any, str]:
     try:
         global TOKENS
 
-        # find labeled data in TOKENS and emplace their values from received_data
-        for i in range(len(TOKENS)):
-            if re.search("{{.*?}}", TOKENS[i]):
-                # its a label so emplace value
-                TOKENS[i] = received_data[TOKENS[i][2:-2]]
+        if type(received_data) == list:
+            for data in received_data:
+                # find labeled data in TOKENS and emplace their values from received_data
+                token_copy = copy.deepcopy(TOKENS)
+                for i in range(len(token_copy)):
+                    if type(token_copy[i]) == str and re.search("{{.*?}}", token_copy[i]):
+                        # its a label so emplace value
+                        token_copy[i] = data[token_copy[i][2:-2]]
 
-        calculation_result = evaluateRPN(TOKENS)
+                calculation_result, calcError = evaluateRPN(token_copy)
+                if calcError:
+                    return None, calcError
 
-        if __NEW_RESULT__ == "update" or __NEW_RESULT__ == "append":
-            received_data[__RESULT_LABEL__] = calculation_result
-        elif __NEW_RESULT__ == "stand-alone":
-            received_data = {
-                __RESULT_LABEL__: calculation_result
-            }
+                if __NEW_RESULT__ == "update" or __NEW_RESULT__ == "append":
+                    data[__RESULT_LABEL__] = calculation_result
+                elif __NEW_RESULT__ == "stand-alone":
+                    data = {
+                        __RESULT_LABEL__: calculation_result
+                    }
+
+        else:
+            # find labeled data in TOKENS and emplace their values from received_data
+            token_copy = copy.deepcopy(TOKENS)
+            for i in range(len(token_copy)):
+                if re.search("{{.*?}}", token_copy[i]):
+                    # its a label so emplace value
+                    token_copy[i] = received_data[token_copy[i][2:-2]]
+
+            calculation_result, calcError = evaluateRPN(token_copy)
+            if calcError:
+                return None, calcError
+
+            if __NEW_RESULT__ == "update" or __NEW_RESULT__ == "append":
+                received_data[__RESULT_LABEL__] = calculation_result
+            elif __NEW_RESULT__ == "stand-alone":
+                received_data = {
+                    __RESULT_LABEL__: calculation_result
+                }
 
         return received_data, None
 

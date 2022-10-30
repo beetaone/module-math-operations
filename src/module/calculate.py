@@ -1,6 +1,9 @@
 """ Solve Reverse Polish Notation """
 
 import math
+from logging import getLogger
+
+log = getLogger("calculate")
 
 single_argument_functions = ["ceil", "fabs", "floor", "exp", "sqrt", "sin", "cos", "tan"]
 
@@ -9,20 +12,21 @@ operations_mapping = {
     "-": (lambda a, b: a - b),
     "*": (lambda a, b: a * b),
     "/": (lambda a, b: a / 1e-16 if b == 0 else a / b), # divide by epsilon, standard approach in data science and machine learning to handle division by zero
+    "%": (lambda a, b: a % b),
+    "^": (lambda a, b: a ** b),
     "ceil": math.ceil,
     "fabs": math.fabs,
     "floor": math.floor,
-    "pow": math.pow,
-    "exp": math.exp,
     "sqrt": math.sqrt,
-    "log": math.log,
     "sin": math.sin,
     "cos": math.cos,
     "tan": math.tan,
-    "mod": math.fmod
+    "exp": math.exp
 }
 
 def evaluateRPN(RPN):
+    log.debug(f'Calculate RPN: {RPN}')
+
     try:
         stack = []
 
@@ -30,7 +34,7 @@ def evaluateRPN(RPN):
         for element in RPN:
             # element is a number
             if element not in list(operations_mapping.keys()):
-                stack.append(int(element))
+                stack.append(float(element))
 
             # element is an operator
             else:
@@ -47,7 +51,7 @@ def evaluateRPN(RPN):
                     stack.append(operations_mapping[element](lhs, rhs))
 
         # return final solution
-        return stack.pop()
+        return stack.pop(), None
 
     except Exception as e:
         return None, f"Exception when evaluating Reverse Polish Notation: {e}"

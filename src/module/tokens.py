@@ -11,24 +11,23 @@ def generateTokens():
 
         TOKENS = []
         stack = []
-        supported_functions = ['ceil', 'fabs', 'floor', 'pow', 'exp', 'sqrt', 'log', 'sin', 'cos', 'tan', 'mod']
+        supported_functions = ['ceil', 'fabs', 'floor', 'exp', 'sqrt', 'sin', 'cos', 'tan']
         operators_weights = {
             '(': 0,
             '+': 1,
             '-': 1,
             '*': 2,
             '/': 2,
-            'ceil': 3,
-            'fabs': 3,
-            'floor': 3,
-            'pow': 3,
-            'exp': 3,
+            '%': 2,
+            '^': 3,
             'sqrt': 3,
-            'log': 3,
-            'sin': 3,
-            'cos': 3,
-            'tan': 3,
-            'mod': 3,
+            'exp': 3,
+            'ceil': 4,
+            'fabs': 4,
+            'floor': 4,
+            'sin': 4,
+            'cos': 4,
+            'tan': 4,
         }
 
         # forward feed the formula and build RPN representation

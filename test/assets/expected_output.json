@@ -1,24 +1,17 @@
-{
-    "employees": [
-        {
-            "name": "Ram",
-            "email": "ram@gmail.com",
-            "age": 23
-        },
-        {
-            "name": "Shyam",
-            "email": "shyam23@gmail.com",
-            "age": 28
-        },
-        {
-            "name": "John",
-            "email": "john@gmail.com",
-            "age": 33
-        },
-        {
-            "name": "Bob",
-            "email": "bob32@gmail.com",
-            "age": 41
-        }
-    ]
-}
+[
+    {
+        "temperature": 12,
+        "volume": 3,
+        "temperatureFahrenheit": 53.6
+    },
+    {
+        "temperature": 10,
+        "volume": 4,
+        "temperatureFahrenheit": 50
+    },
+    {
+        "temperature": 1.3234,
+        "volume": 3,
+        "temperatureFahrenheit": 34.38212
+    }
+]
