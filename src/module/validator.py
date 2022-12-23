@@ -40,7 +40,7 @@ def data_validation(data: any) -> str:
         if type(data) == list:
             for d in data:
                 # check if all labels required in FORMULA are present in the received data
-                missing_labels = list(set(REQUIRED_LABELS) - set(d.keys()))
+                missing_labels = set(REQUIRED_LABELS) - set(d.keys())
                 if missing_labels:
                     return f"The following data labels included in mathematics FORMULA were not found in received data: {missing_labels}"
 
@@ -50,7 +50,7 @@ def data_validation(data: any) -> str:
 
         else:
             # check if all labels required in FORMULA are present in the received data
-            missing_labels = list(set(REQUIRED_LABELS) - set(data.keys()))
+            missing_labels = set(REQUIRED_LABELS) - set(data.keys())
             if missing_labels:
                 return f"The following data labels included in mathematics FORMULA were not found in received data: {missing_labels}"
 
