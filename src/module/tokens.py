@@ -53,23 +53,15 @@ def generateTokens():
 
             # found a number
             elif formula[0].isdigit():
-                currNumber = int(formula[0])
-                formula = formula[1:]
-                decimal = True
-                divider = 1
+                number_str = ""
                 while formula and (formula[0].isdigit() or formula[0] == '.'):
-                    if formula[0].isdigit():
-                        currNumber = currNumber * 10 + int(formula[0])
-                        if not decimal:
-                            divider = divider * 10
-                    else:
-                        decimal = False
+                    number_str += formula[0]
                     formula = formula[1:]
-                currNumber = currNumber / divider
+                number = float(number_str)
                 if negative_number_flag:
-                    currNumber = currNumber * (-1)
+                    number = number * (-1)
                     negative_number_flag = False
-                tokens.append(currNumber)
+                tokens.append(number)
 
             # found label from data
             elif formula[0] == '{':
