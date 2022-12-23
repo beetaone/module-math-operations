@@ -103,9 +103,9 @@ def generateTokens():
                 else:
                     return None, f'Unsupported function [{function_name}]. Please select among supported functions {supported_functions}'
 
-            # coma from function declaration so skip it
-            elif formula[0] == ',':
-                formula = formula[1:]
+            # # coma from function declaration so skip it
+            # elif formula[0] == ',':
+            #     formula = formula[1:]
 
             else:
                 return None, f'Unsupported character: {formula[0]}'
