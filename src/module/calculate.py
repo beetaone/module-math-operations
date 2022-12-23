@@ -5,7 +5,7 @@ from logging import getLogger
 
 log = getLogger("calculate")
 
-single_argument_functions = ["ceil", "fabs", "floor", "exp", "sqrt", "sin", "cos", "tan"]
+single_argument_functions = ["ceil", "abs", "floor", "exp", "sqrt", "sin", "cos", "tan"]
 
 operations_mapping = {
     "+": (lambda a, b: a + b),
@@ -15,7 +15,7 @@ operations_mapping = {
     "%": (lambda a, b: a % b),
     "^": (lambda a, b: a ** b),
     "ceil": math.ceil,
-    "fabs": math.fabs,
+    "abs": abs,
     "floor": math.floor,
     "sqrt": math.sqrt,
     "sin": math.sin,

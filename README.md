@@ -19,7 +19,7 @@
 
 ## Description
 
-This module enables performing math operations on the data. Supported operations: + - * / % ^ ceil fabs floor sqrt sin cos tan exp. Negative numbers must be put in brackets, i.e. (-9) or (-1.34). If you want to use received data, then refer to them in your calculations formula by placing their label in double curly brackets, i.e. if your data is { 'temperature': 12, 'volume': 3 } and want to use temperature in your calculations then refer to it as {{temperature}}
+This module enables performing math operations on the data. Supported operations: + - * / % ^ ceil abs floor sqrt sin cos tan exp. Negative numbers must be put in brackets, i.e. (-9) or (-1.34). If you want to use received data, then refer to them in your calculations formula by placing their label in double curly brackets, i.e. if your data is { 'temperature': 12, 'volume': 3 } and want to use temperature in your calculations then refer to it as {{temperature}}
 
 Sample calculations:
 
@@ -38,7 +38,7 @@ Sample calculations:
 | `%` | Modulus. |
 | `^` | Power. |
 | `ceil(x)` | Return the ceiling of x, the smallest integer greater than or equal to x. |
-| `fabs(x)` | Return the absolute value of x. |
+| `abs(x)` | Return the absolute value of x. |
 | `floor(x)` | Return the floor of x, the largest integer less than or equal to x. |
 | `sqrt(x)` | Return the square root of x. |
 | `sin(x)` | Return the sine of x radians. |

@@ -11,7 +11,7 @@ def generateTokens():
 
         TOKENS = []
         stack = []
-        supported_functions = ['ceil', 'fabs', 'floor', 'exp', 'sqrt', 'sin', 'cos', 'tan']
+        supported_functions = ['ceil', 'abs', 'floor', 'exp', 'sqrt', 'sin', 'cos', 'tan']
         operators_weights = {
             '(': 0,
             '+': 1,
@@ -23,7 +23,7 @@ def generateTokens():
             'sqrt': 3,
             'exp': 3,
             'ceil': 4,
-            'fabs': 4,
+            'abs': 4,
             'floor': 4,
             'sin': 4,
             'cos': 4,
