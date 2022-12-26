@@ -44,18 +44,12 @@ def data_validation(data: any) -> str:
                 if missing_labels:
                     return f"The following data labels included in mathematics FORMULA were not found in received data: {missing_labels}"
 
-                if os.getenv("NEW_RESULT") == "update" and not os.getenv("RESULT_LABEL") in list(d.keys()):
-                    return f"Chose to update {os.getenv('RESULT_LABEL')} with a calculated new result, but could not find the label in received data (received fields: {list(d.keys())})"
-
 
         else:
             # check if all labels required in FORMULA are present in the received data
             missing_labels = set(REQUIRED_LABELS) - set(data.keys())
             if missing_labels:
                 return f"The following data labels included in mathematics FORMULA were not found in received data: {missing_labels}"
-
-            if os.getenv("NEW_RESULT") == "update" and not os.getenv("RESULT_LABEL") in list(data.keys()):
-                return f"Chose to update {os.getenv('RESULT_LABEL')} with a calculated new result, but could not find the label in received data (received fields: {list(data.keys())})"
 
         return None
 

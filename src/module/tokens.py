@@ -48,7 +48,7 @@ def generateTokens():
                 formula = formula[1:]
                 # check for the negative number following the opening bracket
                 if formula[0] == '-':
-                    negative_number_flag = True
+                    negative_number_flag = not negative_number_flag
                     formula = formula[1:]
 
             # found a number
