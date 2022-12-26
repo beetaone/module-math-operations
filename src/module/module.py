@@ -7,7 +7,6 @@ Edit this file to implement your module.
 
 import os
 import re
-import copy
 from logging import getLogger
 from .tokens import generateTokens
 from .calculate import evaluateRPN
@@ -25,7 +24,7 @@ def calculate(data):
     global TOKENS
 
     # find labeled data in TOKENS and emplace their values from received_data
-    token_copy = copy.deepcopy(TOKENS)
+    token_copy = TOKENS.copy()
 
     for i in range(len(token_copy)):
         if type(token_copy[i]) == str and re.search("{{.*?}}", token_copy[i]):
