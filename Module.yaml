@@ -28,12 +28,11 @@ envs:                                   # Array of environment variables that wi
     dependencies: []
   - name: Action on Result
     key: NEW_RESULT
-    description: What to do with the calculated results? Update result label? Append result label? Output as stand alone data?
+    description: What to do with the calculated results? Update result label? Output as stand alone data?
     value: 'update'
     type: 'select'
     options:
         - update
-        - append
         - stand-alone
     dependencies: []
 ports: []

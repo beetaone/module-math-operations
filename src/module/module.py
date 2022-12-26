@@ -36,7 +36,7 @@ def calculate(data):
     if calc_error:
         return None, calc_error
 
-    if __NEW_RESULT__ == "update" or __NEW_RESULT__ == "append":
+    if __NEW_RESULT__ == "update":
         data[__RESULT_LABEL__] = calc_result
     elif __NEW_RESULT__ == "stand-alone":
         data = {

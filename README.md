@@ -56,7 +56,7 @@ The following module configurations can be provided in a data service designer s
 | -------------------- | ------------------------- | -------- | -------------------------------------------------------- |
 | Formula    | FORMULA         | string   | Build a mathematics formula using supported operations. To use data in your calculations refer to their labels in double curly brackets {{...}}.            |
 | Result Label    | RESULT_LABEL         | string  | Assign calculations results to this label.            |
-| Action on Result    | NEW_RESULT         | string  | What to do with the calculated results? Update result label? Append result label? Output as stand alone data? Options: `update`, `append`, `stand-alone`. If selected `update` then calculated value will update value assigned to `Result Label`. If selected `append` then calculated value will be appended to the data object received by the module and assigned to `Result Label`. If selected `stand-alone` then data received by the module will be disregarded and the module will output a new JSON object holding calculated value and assigned to `Result Label`             |
+| Action on Result    | NEW_RESULT         | string  | What to do with the calculated results? Update result label? Output as stand alone data? Options: `update` or `stand-alone`. If selected `update` then calculated value will update value assigned to `Result Label` or append to the data object received by the module if `Result Label` is not present. If selected `stand-alone` then data received by the module will be disregarded and the module will output a new JSON object holding calculated value and assigned to `Result Label`             |
 
 
 ### Set by the weeve Agent on the edge-node
@@ -112,7 +112,7 @@ Input to this module is:
 
 ## Output
 
-If the following module configuration is provided `FORMULA = {{temperature}} * 9/5 + 32`, `RESULT_LABEL = temperatureFahrenheit`, `NEW_RESULT = append` then output of this module to the above input data will be:
+If the following module configuration is provided `FORMULA = {{temperature}} * 9/5 + 32`, `RESULT_LABEL = temperatureFahrenheit`, `NEW_RESULT = update` then output of this module to the above input data will be:
 
 * JSON body single object, example:
 
