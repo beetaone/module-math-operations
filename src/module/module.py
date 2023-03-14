@@ -65,17 +65,19 @@ def module_main(received_data: any) -> [any, str]:
         global TOKENS
 
         if type(received_data) == list:
+            processed_data = []
             for data in received_data:
-                data, calc_error = calculate(data)
+                result, calc_error = calculate(data)
                 if calc_error:
                     return None, calc_error
+                processed_data.append(result)
 
         else:
-            received_data, calc_error = calculate(received_data)
+            processed_data, calc_error = calculate(received_data)
             if calc_error:
                 return None, calc_error
 
-        return received_data, None
+        return processed_data, None
 
     except Exception as e:
         return None, f"Exception in the module business logic: {e}"

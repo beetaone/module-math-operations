@@ -3,7 +3,7 @@
 |           |                                                                                       |
 | --------- | ------------------------------------------------------------------------------------- |
 | Name      | Math Operations                                                                       |
-| Version   | v1.0.0                                                                                |
+| Version   | v1.0.1                                                                                |
 | DockerHub | [weevenetwork/math-operations](https://hub.docker.com/r/weevenetwork/math-operations) |
 | Authors   | Jakub Grzelak                                                                         |
 
