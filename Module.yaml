@@ -1,8 +1,8 @@
-displayName: 'Math Operations'       # Display name for the module that will be displayed in the UI.
-moduleName: 'math-operations'        # Module name that will be used to reference the module, and uniquely identify the module and their versions.
+displayName: 'Math Operations (Data Typing)'       # Display name for the module that will be displayed in the UI.
+moduleName: 'math-operations-data-typing'        # Module name that will be used to reference the module, and uniquely identify the module and their versions.
 description: 'This module enables performing math operations on the data. Supported operations: + - * / % ^ ceil abs floor sqrt sin cos tan exp'       # Module description that will be displayed in the UI.
 versionName: 'v1.0.2'                    # Module version name that will be used to reference the module version, and uniquely identify the module version with a common name.
-isPublic: true                          # Boolean value that indicates if the module is Public or Private.
+isPublic: false                          # Boolean value that indicates if the module is Public or Private.
 categories:                             # Array of category that will be used to group the module in the UI.
   - 'Policies'
 type: 'Processing'      # Module type (Input, Processing, Output) that will be used to group the module in the UI.
@@ -16,14 +16,14 @@ envs:                                   # Array of environment variables that wi
     key: FORMULA                # key to set in the environment variables.
     description: Build a mathematics formula using supported operations. To use data in your calculations refer to their labels in double curly brackets {{...}}.   # Description/helper text for the field.
     value: '{{temperature}}*((-9)/5)+32-sin({{volume}})'                         # Value to be set in the environment variables.
-    type: 'text'                    # Type of the field. Possible values are: ['text', 'select', 'boolean', 'date', 'time', 'dateTime-local', 'number', 'multiple', 'CSV', 'file']
+    type: 'text'                    # Type of the field. Possible values are: ['input', 'output', 'text', 'select', 'boolean', 'date', 'time', 'dateTime-local', 'number', 'multiple', 'CSV', 'file']
     options: []
     dependencies: []                  # List of dependencies for the field. This field is only displayed if all the dependencies are met. If
   - name: Result Label
     key: RESULT_LABEL
     description: Assign calculations results to this label.
     value: 'newTemperature'
-    type: 'text'
+    type: 'output'
     options: []
     dependencies: []
   - name: Action on Result
