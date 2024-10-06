@@ -4,7 +4,7 @@
 | --------- | ------------------------------------------------------------------------------------- |
 | Name      | Math Operations                                                                       |
 | Version   | v1.0.2                                                                                |
-| DockerHub | [weevenetwork/math-operations](https://hub.docker.com/r/weevenetwork/math-operations) |
+| DockerHub | [beetaone/math-operations](https://hub.docker.com/r/beetaone/math-operations) |
 | Authors   | Jakub Grzelak                                                                         |
 
 - [Math Operations](#math-operations)
@@ -12,7 +12,7 @@
   - [Supported Operations](#supported-operations)
   - [Environment Variables](#environment-variables)
     - [Module Specific](#module-specific)
-    - [Set by the weeve Agent on the edge-node](#set-by-the-weeve-agent-on-the-edge-node)
+    - [Set by the beetaone Agent on the edge-node](#set-by-the-beetaone-agent-on-the-edge-node)
   - [Dependencies](#dependencies)
   - [Input](#input)
   - [Output](#output)
@@ -50,7 +50,7 @@ Sample calculations:
 
 ### Module Specific
 
-The following module configurations can be provided in a data service designer section on weeve platform:
+The following module configurations can be provided in a data service designer section on beetaone platform:
 
 | Name             | Environment Variables | type   | Description                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    |
 | ---------------- | --------------------- | ------ | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -58,9 +58,9 @@ The following module configurations can be provided in a data service designer s
 | Result Label     | RESULT_LABEL          | string | Assign calculations results to this label.                                                                                                                                                                                                                                                                                                                                                                                                                                                     |
 | Action on Result | NEW_RESULT            | string | What to do with the calculated results? Update result label? Output as stand alone data? Options: `update` or `stand-alone`. If selected `update` then calculated value will update value assigned to `Result Label` or append to the data object received by the module if `Result Label` is not present. If selected `stand-alone` then data received by the module will be disregarded and the module will output a new JSON object holding calculated value and assigned to `Result Label` |
 
-### Set by the weeve Agent on the edge-node
+### Set by the beetaone Agent on the edge-node
 
-Other features required for establishing the inter-container communication between modules in a data service are set by weeve agent.
+Other features required for establishing the inter-container communication between modules in a data service are set by beetaone agent.
 
 | Environment Variables | type   | Description                                    |
 | --------------------- | ------ | ---------------------------------------------- |
